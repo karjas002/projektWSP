@@ -16,4 +16,5 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_order;
     private Boolean is_paid;
+    private Boolean making;
 }
