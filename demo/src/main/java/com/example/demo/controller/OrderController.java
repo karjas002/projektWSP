@@ -23,13 +23,13 @@ public class OrderController {
         List <Order> orders = new ArrayList<Order>();
         orders.addAll(orderService.getToDoOrders());
         System.out.println(orders);
-        List <FoodOrdered> foodOrderedList = new ArrayList<FoodOrdered>();
-//        for (Order o : orders){
-//            //System.out.println(orderService.getOrderedFood((long)1));
-//            foodOrderedList.add(orderService.getOrderedFood2(o.getClass().cast(Order).));
-//        }
-        //System.out.println(orderService.getOrderedFood(orders.indexOf()));
-
+        List<List<FoodOrdered>> foodOrderedList = new ArrayList<>();
+        for (Order o : orders){
+            //System.out.println(orderService.getOrderedFood(o));
+            foodOrderedList.add(orderService.getOrderedFood(o));
+        }
+        System.out.println(foodOrderedList);
+        //System.out.println(foodOrderedList);
         //System.out.println(orderService.getOrderedFood(orders.));
         //System.out.println(orders);
 

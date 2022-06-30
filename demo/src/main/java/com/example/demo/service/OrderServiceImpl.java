@@ -25,10 +25,10 @@ public class OrderServiceImpl implements OrderService{
     public List<Order> getToDoOrders(){
         return orderRepository.findBymakingTrue();
     }
-//    @Override
-//    public List<FoodOrdered> getOrderedFood(Long id_order){
-//        return foodOrderedRepository.findFoodOrderedById_order(id_order);
-//    }
+    @Override
+    public List<FoodOrdered> getOrderedFood(Order order){
+        return foodOrderedRepository.findFoodOrderedByOrder(order);
+    }
 
 
 }

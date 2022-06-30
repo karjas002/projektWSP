@@ -12,6 +12,6 @@ import java.util.List;
 public interface FoodOrderedRepository extends JpaRepository<FoodOrdered, Long> {
     //FoodOrdered findById(long id);
     List<FoodList> findByOrder(Order order);
-    //List<FoodOrdered> findFoodOrderedByOrder(Order order);
-    //List<FoodOrdered> findFoodOrderedById_order(Long id_order);
+    List<FoodOrdered> findFoodOrderedByOrder(Order order);
+    //List<FoodOrdered> findFoodOrderedByid_order(Long id_order);
 }
