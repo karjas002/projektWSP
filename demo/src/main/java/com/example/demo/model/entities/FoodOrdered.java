@@ -21,4 +21,5 @@ public class FoodOrdered {
     @JoinColumn(name = "id_order")
     private Order order;
 
+    private Integer counter;
 }

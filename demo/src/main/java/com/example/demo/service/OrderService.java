@@ -10,4 +10,7 @@ public interface OrderService {
         List<Order> getAllOrders();
         List<Order> getToDoOrders();
         List<FoodOrdered> getOrderedFood(Order order);
+        Order findOrder(long id);
+        Order saveOrder(Order order);
+        void deleteOrder(Order order);
 }

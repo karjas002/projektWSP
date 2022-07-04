@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d5101c5-ad7d-4bd5-a5b3-d67aa55f7961" name="Changes" comment="" />
+    <list default="true" id="60b40dd4-cccd-493b-b994-42f65493d865" name="Changes" comment="" />
+    <list id="ab7fd922-fc4f-4d95-845c-1f7361f0ccb3" name="Changes by Karol" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,9 +26,19 @@
       <map>
         <entry key="com.haulmont.jpb.jpaInspector" value="false" />
         <entry key="com.haulmont.jpb.jpaPalette" value="false" />
-        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
       </map>
     </option>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controller/OrderController.java">
+      <ranges>
+        <range start1="40" end1="40" start2="40" end2="41" changelist="ab7fd922-fc4f-4d95-845c-1f7361f0ccb3" />
+        <range start1="45" end1="47" start2="46" end2="46" changelist="60b40dd4-cccd-493b-b994-42f65493d865" />
+        <range start1="58" end1="59" start2="57" end2="58" changelist="60b40dd4-cccd-493b-b994-42f65493d865" />
+        <range start1="65" end1="65" start2="64" end2="71" changelist="60b40dd4-cccd-493b-b994-42f65493d865" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -39,7 +50,7 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectId" id="2BJ0aoKBrTRTsc87abe57X6pLPS" />
+  <component name="ProjectId" id="2BTl8YqqfbZEmh0rHdRcHkGw7kA" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -72,11 +83,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2d5101c5-ad7d-4bd5-a5b3-d67aa55f7961" name="Changes" comment="" />
-      <created>1656608946575</created>
+      <changelist id="60b40dd4-cccd-493b-b994-42f65493d865" name="Changes" comment="" />
+      <created>1656937796607</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1656608946575</updated>
+      <updated>1656937796607</updated>
     </task>
     <servers />
   </component>

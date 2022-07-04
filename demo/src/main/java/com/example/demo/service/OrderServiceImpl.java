@@ -11,6 +11,7 @@ import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService{
+
     @Autowired
     private OrderRepository orderRepository;
 
@@ -29,6 +30,15 @@ public class OrderServiceImpl implements OrderService{
     public List<FoodOrdered> getOrderedFood(Order order){
         return foodOrderedRepository.findFoodOrderedByOrder(order);
     }
-
-
+    @Override
+    public Order findOrder(long id) { return orderRepository.findById(id);}
+    @Override
+    public Order saveOrder(Order order) {
+        return orderRepository.save(order);
+    }
+    @Override
+    public void deleteOrder(Order order){
+        orderRepository.delete(order);
+        System.out.println("Usunięto");
+    }
 }
