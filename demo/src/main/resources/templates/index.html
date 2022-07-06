@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.7.2.js"
+    ></script>
+  </head>
+  <body>
+  <section class="container">
+    <section class="content">
+      <!-- <h1>Test test</h1> -->
+      <section class="browse">
+        <section class="sideBar">
+          <div class="logo">
+            <a th:href="@{/0}">
+            <h2>Logo</h2></a>
+          </div>
+          <div class="category" th:each="type : ${foodTypeList}">
+            <a th:href="@{/{id}(id=${type.id_food_type})}" >
+              <img th:src="@{img/burger.png}" />
+              <p th:text="${type.foodType_name}" />
+            </a>
+          </div>
+        </section>
+
+        <section class="products">
+          <h2>Burgery</h2>
+          <div class="productsList">
+            <div th:each="food : ${foodList}">
+              <a href="#" class="info">
+                <div class="product">
+                  <img src="../static/img/burger.png" th:src="@{img/burger.png}" />
+                  <p th:text="${food.food_name}"/>
+                  <p th:text="${food.price} + ' PLN'"/>
+                </div>
+              </a>
+
+              <div class="overlay">
+                <div class="innerContainer">
+                  <h2 th:text="${food.food_name}" />
+                  <img src="../static/img/burger.png" th:src="@{img/burger.png}" />
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Eveniet voluptatem velit in modi rerum sequi quae neque
+                    laudantium fuga aut possimus dolorum odio, dolor fugiat
+                    molestias illo autem commodi eum?
+                  </p>
+                  <form action="#" method="post">
+                    <input type="number" value="1" />
+                    <div class="buttons">
+                      <button class="cancel">Anuluj</button>
+                      <button type="submit">dodaj do zamówienia</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="summaryBox">
+        <div class="summaryInfo">Do zapłaty: 100zł | Zamówiono: 5 rzeczy</div>
+        <div class="summaryButtons">
+          <button>Anuluj zamówienie</button>
+          <button class="green">Gotowe!</button>
+        </div>
+      </section>
+    </section>
+  </section>
+  <script th:src="@{/js/script.js}"></script>
+  </body>
+</html>
