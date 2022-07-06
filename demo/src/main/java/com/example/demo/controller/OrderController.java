@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.entities.FoodList;
 import com.example.demo.model.entities.FoodOrdered;
 import com.example.demo.model.entities.Order;
 import com.example.demo.service.OrderService;
@@ -8,10 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class OrderController {
@@ -69,4 +70,38 @@ public class OrderController {
         orderService.deleteOrder(order);
         return "redirect:/kitchen";
     }
+
+    @GetMapping("summary")
+//    public String getSummary(Model model, List<FoodList> dupa)
+    public String getSummary(Model model){
+
+        // do wyjebania jak będziemy ściągać liste z porpzedniego widoku
+
+        List<FoodList> zamowione_jedzenie = new ArrayList<>();
+
+        zamowione_jedzenie.add(orderService.findById(1));
+        zamowione_jedzenie.add(orderService.findById(1));
+        zamowione_jedzenie.add(orderService.findById(3));
+        zamowione_jedzenie.add(orderService.findById(2));
+
+        System.out.println(zamowione_jedzenie);
+
+        // do wyjebania jak będziemy ściągać liste z porpzedniego widoku
+
+        double fullPrice = 0;
+        int countElements = 0;
+
+        for (int i=0; i < zamowione_jedzenie.size(); i++){
+            fullPrice = fullPrice + zamowione_jedzenie.get(i).getPrice();
+            countElements++;
+        }
+
+        model.addAttribute("showOrdered", zamowione_jedzenie);
+        model.addAttribute("showPrice", fullPrice);
+        model.addAttribute("showCount", countElements);
+        return "summary";
+    }
+
+
+
 }

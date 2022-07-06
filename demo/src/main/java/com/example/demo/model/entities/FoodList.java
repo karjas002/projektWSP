@@ -22,4 +22,6 @@ public class FoodList {
     @JoinColumn(name = "id_food_type")
     private FoodType foodType;
     private double price;
+
+    private String img;
 }
