@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60b40dd4-cccd-493b-b994-42f65493d865" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <list id="ab7fd922-fc4f-4d95-845c-1f7361f0ccb3" name="Changes by Karol" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -94,10 +95,22 @@
       <updated>1656937796607</updated>
       <workItem from="1657118032160" duration="785000" />
       <workItem from="1657118950521" duration="34000" />
+      <workItem from="1657119491498" duration="23000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
