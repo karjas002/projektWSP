@@ -16,4 +16,5 @@ public class FoodType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_food_type;
     private String foodType_name;
+    private String img;
 }

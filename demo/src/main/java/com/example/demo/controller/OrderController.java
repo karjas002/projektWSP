@@ -5,10 +5,13 @@ import com.example.demo.model.entities.FoodOrdered;
 import com.example.demo.model.entities.Order;
 import com.example.demo.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +22,7 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+
 
     @GetMapping("/kitchen")
     public String showOrders (Model model){
@@ -101,7 +105,43 @@ public class OrderController {
         model.addAttribute("showCount", countElements);
         return "summary";
     }
+    public List <FoodList> lista_zamowien = new ArrayList<>();
 
+    @GetMapping("/addingFoodtemp")
+    public String addingFood(Model model){
+        model.addAttribute("food", new FoodList());
+
+
+
+        return "addingFoodtemp";
+    }
+
+    @PostMapping("/addingFoodtemp")
+    public String addingFood(@ModelAttribute("food") FoodList foodList, Model model){
+
+        lista_zamowien.add(foodList);
+        System.out.println(lista_zamowien);
+        //System.out.println("TU JEST FOODLIISTA -----------------------------"+foodList);
+        return "redirect:/";
+    }
+
+    @GetMapping("index")
+    public String getPriceandCount(Model model){
+
+        double fullPrice = 0;
+        int countElements = 0;
+
+        for (int i=0; i < lista_zamowien.size(); i++){
+            fullPrice = fullPrice + lista_zamowien.get(i).getPrice();
+            countElements++;
+        }
+
+        //model.addAttribute("showOrdered", lista_zamowien);
+        model.addAttribute("showPrice", fullPrice);
+        System.out.println("Tu jest CENA: "+fullPrice);
+        model.addAttribute("showCount", countElements);
+        return "index";
+    }
 
 
 }
