@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.entities.FoodList;
 import com.example.demo.model.entities.FoodOrdered;
 import com.example.demo.model.entities.Order;
+import com.example.demo.service.FoodOrderedService;
 import com.example.demo.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.GsonBuilderUtils;
@@ -22,7 +23,8 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
-
+    @Autowired
+    private FoodOrderedService foodOrderedService;
 
     @GetMapping("/kitchen")
     public String showOrders (Model model){
@@ -68,6 +70,8 @@ public class OrderController {
         return "redirect:/kitchen";
     }
 
+
+
     @GetMapping("deleteOrder/{id}")
     public String deleteOrder(@PathVariable (value = "id") long id){
         Order order = orderService.findOrder(id);
@@ -95,12 +99,12 @@ public class OrderController {
         double fullPrice = 0;
         int countElements = 0;
 
-        for (int i=0; i < zamowione_jedzenie.size(); i++){
-            fullPrice = fullPrice + zamowione_jedzenie.get(i).getPrice();
+        for (int i=0; i < lista_zamowien.size(); i++){
+            fullPrice = fullPrice + lista_zamowien.get(i).getPrice();
             countElements++;
         }
 
-        model.addAttribute("showOrdered", zamowione_jedzenie);
+        model.addAttribute("showOrdered", lista_zamowien);
         model.addAttribute("showPrice", fullPrice);
         model.addAttribute("showCount", countElements);
         return "summary";
@@ -143,5 +147,26 @@ public class OrderController {
         return "index";
     }
 
+    @GetMapping("/deleteOrdered")
+    public String deleteOrdered(){
+        lista_zamowien.clear();
+        return "redirect:/";
+    }
+
+    @GetMapping("/payment")
+    public String makeOrder(){
+        Order new_order = new Order(0l, false, false);
+        Order new_order2 = orderService.saveOrder(new_order); // tak sie robi zeby ściągnąc ID bo inaczej jest chujnia i sciąga id_order=0
+
+        System.out.println("ID ORDER - "+new_order2.getId_order());
+        for(int i = 0; i < lista_zamowien.size(); i++){
+            //wrzucanko do foodordered narazie bez countera bo ni chuja nie wiem jak to zrobić
+            FoodOrdered foodOrdered = new FoodOrdered(0l, lista_zamowien.get(i), new_order2, 1);
+            foodOrderedService.saveOrderedFood(foodOrdered);
+        }
+
+        lista_zamowien.clear();
+        return "payment";
+    }
 
 }

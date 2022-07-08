@@ -81,8 +81,9 @@
       <div th:text="'Do zapłaty: ' + ${showPrice} + ' | Zamówiono ' + ${showCount} + ' rzeczy'" class="summaryInfo"></div>
 <!--      <div class="summaryInfo">Do zapłaty: 100zł | Zamówiono: 5 rzeczy</div>-->
       <div class="summaryButtons">
-        <button>Anuluj zamówienie</button>
-        <button class="green">Gotowe!</button>
+<!--        <a th:href="@{/deleteOrder/{id}(id=${order.id_order})}" class="resturantBtn red">usuń</a>-->
+        <a th:href="@{/deleteOrdered}"><button>Anuluj zamówienie</button></a>
+        <a href ="summary"><button class="green">Gotowe!</button></a>
       </div>
     </section>
   </section>

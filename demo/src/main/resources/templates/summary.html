@@ -47,8 +47,8 @@
         <section class="summaryBox">
           <div th:text="'Do zapłaty: ' + ${showPrice} + ' | Zamówiono ' + ${showCount} + ' rzeczy'" class="summaryInfo"></div>
           <div class="summaryButtons">
-            <button>Anuluj zamówienie</button>
-            <button class="green">Zamawiam!</button>
+            <a th:href="@{/deleteOrdered}"><button>Anuluj zamówienie</button></a>
+            <a th:href="@{/payment}"><button class="green">Zamawiam!</button></a>
           </div>
         </section>
       </section>
