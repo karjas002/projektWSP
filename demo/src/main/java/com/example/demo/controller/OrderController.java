@@ -31,7 +31,7 @@ public class OrderController {
         //return orderService.getToDoOrders();
         List <Order> orders = new ArrayList<Order>();
         orders.addAll(orderService.getToDoOrders());
-        System.out.println(orders);
+        System.out.println("ORDERSY: "+orders);
         List<List<FoodOrdered>> foodOrderedList = new ArrayList<>();
         for (Order o : orders){
             //System.out.println(orderService.getOrderedFood(o));
