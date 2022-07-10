@@ -2,7 +2,7 @@
 
 Technologie:
 1. Java Spring Boot: 
-  -	Thymeleaf (HTML, CSS, JavaScript) – pozwala na tworzenie interfejsu użytkownika za pomocą 
+  -	Thymeleaf (HTML, CSS, JavaScript)
   -	Spring Web
   -	Spring Security
   -	Spring Data JPA
