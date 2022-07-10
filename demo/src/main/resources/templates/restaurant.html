@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="refresh" content="5" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +13,9 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+
   </head>
+  <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
   <body>
     <section class="container">
       <section class="content">
@@ -22,14 +25,14 @@
         </div>
         <div class="tables">
           <div class="inProgress">
-            <div class="number">6</div>
-            <div class="number">7</div>
-            <div class="number">12</div>
-            <div class="number">21</div>
+            <th:block th:each ="robione : ${showMaking}">
+            <div class="number" th:text ="${robione.id_order}"></div>
+            </th:block>
           </div>
           <div class="ready">
-            <div class="number">1</div>
-            <div class="number">5</div>
+            <th:block th:each ="gotowe : ${showDone}">
+              <div class="number" th:text ="${gotowe.id_order}"></div>
+            </th:block>
           </div>
         </div>
       </section>

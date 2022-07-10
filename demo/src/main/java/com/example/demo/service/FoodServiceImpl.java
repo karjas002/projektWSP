@@ -28,4 +28,8 @@ public class FoodServiceImpl implements FoodService{
     public List<FoodType> getAllTypes() {
         return foodTypeRepository.findAll();
     }
+    @Override
+    public FoodList findById(long id) {
+        return foodListRepository.findById(id);
+    }
 }

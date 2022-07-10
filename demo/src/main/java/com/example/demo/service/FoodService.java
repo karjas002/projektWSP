@@ -9,5 +9,5 @@ public interface FoodService {
     List<FoodList> getAllFood();
     List<FoodList> getFoodByCategory(FoodType foodType);
     List<FoodType> getAllTypes();
-
+    FoodList findById(long id);
 }

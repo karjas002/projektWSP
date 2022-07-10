@@ -1,58 +1,77 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
-    <script
-      type="text/javascript"
-      src="https://code.jquery.com/jquery-1.7.2.js"
-    ></script>
-  </head>
-  <body>
-    <section class="container">
-      <section class="content">
-        <section class="items">
-          <h2>Podsumowanie twojego zamówienia</h2>
-<!--          <a href="#" class="info">-->
-            <div class="item" th:each="zamowienie : ${showOrdered}">
-              <img th:src="${zamowienie.img}"/>
-              <h1 th:text="${zamowienie.food_name}"></h1>
-              <p th:text="${zamowienie.price} + ' ' +PLN"></p>
-              <button class="green">edit</button>
-            </div>
-<!--          </a>-->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+  <script
+          type="text/javascript"
+          src="https://code.jquery.com/jquery-1.7.2.js"
+  ></script>
+</head>
+<body>
+<section class="container">
+  <section class="content">
+    <section class="items">
+      <h2>Podsumowanie twojego zamówienia</h2>
 
-<!--          <div class="overlay">-->
-<!--            <div class="innerContainer">-->
-<!--              <h2>Burgeros 2</h2>-->
-<!--              <input type="number" value="1" />-->
-<!--              <div class="buttons">-->
-<!--                <button class="cancel">usuń</button>-->
-<!--                <button class="green">zmień</button>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-        </section>
+      <div th:each="zamowienie : ${showOrdered}">
+        <a href="#" class="info">
+      <div class="item" >
+        <img th:src="${zamowienie.img}"/>
+        <h1 th:text="${zamowienie.food_name} + '(x' + ${zamowienie.counter}+')' "></h1>
+        <p th:text="${zamowienie.price*zamowienie.counter} + ' ' +PLN"></p>
+        <button class="green">edit</button>
+      </div>
+        </a>
 
-        <section class="summaryBox">
-          <div th:text="'Do zapłaty: ' + ${showPrice} + ' | Zamówiono ' + ${showCount} + ' rzeczy'" class="summaryInfo"></div>
-          <div class="summaryButtons">
-            <a th:href="@{/deleteOrdered}"><button>Anuluj zamówienie</button></a>
-            <a th:href="@{/payment}"><button class="green">Zamawiam!</button></a>
-          </div>
-        </section>
-      </section>
+                <div class="overlay">
+                  <div class="innerContainer">
+                    <h2 th:text ="${zamowienie.food_name}"></h2>
+<!--                    <form th:action="@{/editOrdertemp}">-->
+<!--                      <input type=hidden" th:value="${zamowienie.id_food}" th:name="idFood">-->
+<!--                      <input type="number" th:value="1" th:name="counter">-->
+<!--                      <div class="buttons">-->
+<!--                        <button class="cancel">usuń</button>-->
+<!--                        <button type="submit" class="green">zmień</button>-->
+<!--                      </div>-->
+<!--                    </form>-->
+                    <form th:action="@{/editOrdertemp}" th:object="${FoodTemp}" method="post">
+                      <input type="hidden" th:value="${zamowienie.id_food}" th:name="id_food">
+                      <input type="hidden" th:value="${zamowienie.food_name}" th:name="food_name">
+                      <input type="hidden" th:value="${zamowienie.foodType}" th:name="food_type">
+                      <input type="hidden" th:value="${zamowienie.price}" th:name="price">
+                      <input type="hidden" th:value="${zamowienie.img}" th:name="img">
+                      <input type="number" th:value="${zamowienie.counter}" th:name="counter">
+
+                    <div class="buttons">
+                      <button class="cancel">usuń</button>
+                      <button type="submit" class="green">zmień</button>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+      </div>
     </section>
-    <script src="script.js"></script>
-  </body>
+
+    <section class="summaryBox">
+      <div th:text="'Do zapłaty: ' + ${showPrice} + ' | Zamówiono ' + ${showCount} + ' rzeczy'" class="summaryInfo"></div>
+      <div class="summaryButtons">
+        <a th:href="@{/deleteOrdered}"><button>Anuluj zamówienie</button></a>
+        <a th:href="@{/payment}"><button class="green">Zamawiam!</button></a>
+      </div>
+    </section>
+  </section>
+</section>
+<script th:src="@{/js/script.js}"></script>
+</body>
 </html>

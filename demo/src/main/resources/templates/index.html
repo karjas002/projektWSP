@@ -58,15 +58,15 @@
                   laudantium fuga aut possimus dolorum odio, dolor fugiat
                   molestias illo autem commodi eum?
                 </p>
-                <form th:action="@{/addingFoodtemp}" th:object="${food}" method="post">
+                <form th:action="@{/addingFoodtemp}" th:object="${FoodTemp}" method="post">
                   <input type="hidden" th:value="${food.id_food}" th:name="id_food">
                   <input type="hidden" th:value="${food.food_name}" th:name="food_name">
                   <input type="hidden" th:value="${food.price}" th:name="price">
 <!--                  <input type="hidden" th:value="${food.foodType}" th:name="foodType">-->
                   <input type="hidden" th:value="${food.img}" th:name="img">
+                  <input type="number" th:name="counter" value="1" />
                   <div class="buttons">
                     <button class="cancel">Anuluj</button>
-                    //tu bedzie magia
                     <button type="submit">dodaj do zamówienia</button>
                   </div>
                 </form>

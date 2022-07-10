@@ -19,15 +19,27 @@
       <section class="content">
         <section class="items">
           <h2>Kuchnia</h2>
-          <div class="item" th:each="order, iterationStatus : ${showOrders}">
+          <div th:if="${order.done == true}" class="item color" th:each="order, iterationStatus : ${showOrders}" >
             <h1 th:text="${order.id_order}"></h1>
             <div>
               <p th:if="${showOrders.size()>1}" th:text="${showProducts[iterationStatus.count-1]}"></p>
               <p th:if="${showOrders.size()==1}" th:text="${showProducts[0]}"></p>
             </div>
-            <a th:href="@{/deleteOrder/{id}(id=${order.id_order})}" class="resturantBtn red">usuń</a>
+
+            <a th:href="@{/deleteOrder/{id}(id=${order.id_order})}"><button class="resturantBtn">odebrano</button></a>
             <a th:href="@{/updateOrder/{id}(id=${order.id_order})}"><button class="resturantBtn green" >gotowe</button></a>
 <!--            <button th:href:onclick="@{/updateOrder/{id}(id=${order.id_order})}" class="resturantBtn green">gotowe</button>-->
+
+          </div>
+          <div th:if="${order.done == false}" class="item" th:each="order, iterationStatus : ${showOrders}" >
+            <h1 th:text="${order.id_order}"></h1>
+            <div>
+              <p th:if="${showOrders.size()>1}" th:text="${showProducts[iterationStatus.count-1]}"></p>
+              <p th:if="${showOrders.size()==1}" th:text="${showProducts[0]}"></p>
+            </div>
+            <a th:href="@{/deleteOrder/{id}(id=${order.id_order})}"><button class="resturantBtn">odebrano</button></a>
+            <a th:href="@{/updateOrder/{id}(id=${order.id_order})}"><button class="resturantBtn green" >gotowe</button></a>
+            <!--            <button th:href:onclick="@{/updateOrder/{id}(id=${order.id_order})}" class="resturantBtn green">gotowe</button>-->
 
           </div>
         </section>

@@ -17,4 +17,6 @@ public class Order {
     private Long id_order;
     private Boolean is_paid;
     private Boolean making;
+    private Boolean done;
+    private Boolean collected;
 }

@@ -230,7 +230,12 @@ form {
   grid-template-columns: 1fr 1fr;
 }
 
-.summaryButtons > button {
+.summaryButtons > a {
+  all: unset;
+  width: 100%;
+}
+
+.summaryButtons > a > button {
   all: unset;
   text-align: center;
   background-color: rgb(218, 43, 24);
@@ -277,6 +282,10 @@ form {
   place-items: center;
 }
 
+.item > div {
+  width: 100%;
+}
+
 .item > div > p {
   margin: 0;
   font-size: 1.2rem;
@@ -296,11 +305,23 @@ form {
   height: 5rem;
 }
 
+.color {
+  background-color: aquamarine !important;
+}
+
+.item > a {
+  all:unset;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+
 .item > button {
   all: unset;
   background-color: rgb(218, 43, 24);
-  height: 60%;
   width: 50%;
+  height: 70%;
   text-align: center;
   color: white;
   font-size: 1.2rem;
@@ -308,7 +329,19 @@ form {
   cursor: pointer;
 }
 
-.item > button:hover {
+.item > a > button {
+  all: unset;
+  background-color: rgb(218, 43, 24);
+  width: 50%;
+  height: 70%;
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.item > a > button:hover {
   background-color: rgb(155, 33, 20);
 }
 
