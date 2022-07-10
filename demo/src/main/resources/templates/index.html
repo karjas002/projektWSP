@@ -1,185 +1,93 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
-    <script
-      type="text/javascript"
-      src="https://code.jquery.com/jquery-1.7.2.js"
-    ></script>
-  </head>
-  <body>
-    <section class="container">
-      <section class="content">
-        <!-- <h1>Test test</h1> -->
-        <section class="browse">
-          <section class="sideBar">
-            <div class="logo"><h2>Logo</h2></div>
-            <div class="category">
-              <img src="burger.png" alt="burger" th:src="@{/images/burger.png}" />
-              <p>Burgery</p>
-            </div>
-            <div class="category">
-              <img src="burger.png" alt="burger" />
-              <p>Burgery</p>
-            </div>
-          </section>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+  <script
+          type="text/javascript"
+          src="https://code.jquery.com/jquery-1.7.2.js"
+  ></script>
+</head>
+<body>
+<section class="container">
+  <section class="content">
+    <!-- <h1>Test test</h1> -->
+    <section class="browse">
+      <section class="sideBar">
+        <div class="logo">
+          <a th:href="@{/0}">
+            <h2>Logo</h2></a>
+        </div>
+        <div class="category" th:each="type : ${foodTypeList}">
+          <a th:href="@{/{id}(id=${type.id_food_type})}" >
+            <img th:src="${type.img}" />
+            <p th:text="${type.foodType_name}" />
+          </a>
+        </div>
+      </section>
 
-          <section class="products">
-            <h2>Burgery</h2>
-            <div class="productsList">
-              <a href="#" class="info">
-                <div class="product">
-                  <img src="burger.png" alt="fries" />
-                  <p>Frytki Classic</p>
-                  <p>9,99 PLN</p>
-                </div>
-              </a>
-
-              <div class="overlay">
-                <div class="innerContainer">
-                  <h2>Burgeros 1</h2>
-                  <img src="burger.png" alt="burger" th:src="@{/images/burger.png}" />
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eveniet voluptatem velit in modi rerum sequi quae neque
-                    laudantium fuga aut possimus dolorum odio, dolor fugiat
-                    molestias illo autem commodi eum?
-                  </p>
-                  <input type="number" value="1" />
-                  <div class="buttons">
-                    <button class="cancel">Anuluj</button>
-                    <button>dodaj do zamówienia</button>
-                  </div>
-                </div>
+      <section class="products">
+        <h2>Burgery</h2>
+        <div class="productsList">
+          <div th:each="food : ${foodList}">
+            <a href="#" class="info">
+              <div class="product">
+                <img th:src="${food.img}"/>
+                <p th:text="${food.food_name}"/>
+                <p th:text="${food.price} + ' PLN'"/>
               </div>
+            </a>
 
-              <a href="#" class="info">
-                <div class="product">
-                  <img src="burger.png" alt="fries" />
-                  <p>Frytki Classic</p>
-                  <p>9,99 PLN</p>
-                </div>
-              </a>
-
-              <div class="overlay">
-                <div class="innerContainer">
-                  <h2>Burgeros 2</h2>
-                  <img src="burger.png" alt="burger" th:src="@{/images/burger.png}" />
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eveniet voluptatem velit in modi rerum sequi quae neque
-                    laudantium fuga aut possimus dolorum odio, dolor fugiat
-                    molestias illo autem commodi eum?
-                  </p>
-                  <input type="number" value="1" />
+            <div class="overlay">
+              <div class="innerContainer">
+                <h2 th:text="${food.food_name}" />
+                <img th:src="${food.img}"/>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Eveniet voluptatem velit in modi rerum sequi quae neque
+                  laudantium fuga aut possimus dolorum odio, dolor fugiat
+                  molestias illo autem commodi eum?
+                </p>
+                <form th:action="@{/addingFoodtemp}" th:object="${FoodTemp}" method="post">
+                  <input type="hidden" th:value="${food.id_food}" th:name="id_food">
+                  <input type="hidden" th:value="${food.food_name}" th:name="food_name">
+                  <input type="hidden" th:value="${food.price}" th:name="price">
+<!--                  <input type="hidden" th:value="${food.foodType}" th:name="foodType">-->
+                  <input type="hidden" th:value="${food.img}" th:name="img">
+                  <input type="number" th:name="counter" value="1" />
                   <div class="buttons">
                     <button class="cancel">Anuluj</button>
-                    <button>dodaj do zamówienia</button>
+                    <button type="submit">dodaj do zamówienia</button>
                   </div>
-                </div>
-              </div>
-
-              <a href="#" class="info">
-                <div class="product">
-                  <img src="burger.png" alt="burger" th:src="@{/images/burger.png}" />
-                  <p>Frytki Classic</p>
-                  <p>9,99 PLN</p>
-                </div>
-              </a>
-
-              <div class="overlay">
-                <div class="innerContainer">
-                  <h2>Burgeros 2</h2>
-                  <img src="burger.png" alt="burger" th:src="@{/images/burger.png}" />
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eveniet voluptatem velit in modi rerum sequi quae neque
-                    laudantium fuga aut possimus dolorum odio, dolor fugiat
-                    molestias illo autem commodi eum?
-                  </p>
-                  <input type="number" value="1" />
-                  <div class="buttons">
-                    <button class="cancel">Anuluj</button>
-                    <button>dodaj do zamówienia</button>
-                  </div>
-                </div>
-              </div>
-
-              <a href="#" class="info">
-                <div class="product">
-                  <img src="burger.png" alt="burger" th:src="@{/images/burger.png}" />
-                  <p>Frytki Classic</p>
-                  <p>9,99 PLN</p>
-                </div>
-              </a>
-
-              <div class="overlay">
-                <div class="innerContainer">
-                  <h2>Burgeros 2</h2>
-                  <img src="burger.png" alt="burger" th:src="@{/images/burger.png}" />
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eveniet voluptatem velit in modi rerum sequi quae neque
-                    laudantium fuga aut possimus dolorum odio, dolor fugiat
-                    molestias illo autem commodi eum?
-                  </p>
-                  <input type="number" value="1" />
-                  <div class="buttons">
-                    <button class="cancel">Anuluj</button>
-                    <button>dodaj do zamówienia</button>
-                  </div>
-                </div>
-              </div>
-
-              <a href="#" class="info">
-                <div class="product">
-                  <img src="burger.png" alt="burger" th:src="@{/images/burger.png}" />
-                  <p>Frytki Classic</p>
-                  <p>9,99 PLN</p>
-                </div>
-              </a>
-
-              <div class="overlay">
-                <div class="innerContainer">
-                  <h2>Burgeros 2</h2>
-                  <img src="burger.png" alt="burger" th:src="@{/images/burger.png}" />
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eveniet voluptatem velit in modi rerum sequi quae neque
-                    laudantium fuga aut possimus dolorum odio, dolor fugiat
-                    molestias illo autem commodi eum?
-                  </p>
-                  <input type="number" value="1" />
-                  <div class="buttons">
-                    <button class="cancel">Anuluj</button>
-                    <button>dodaj do zamówienia</button>
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
-          </section>
-        </section>
-
-        <section class="summaryBox">
-          <div class="summaryInfo">Do zapłaty: 100zł | Zamówiono: 5 rzeczy</div>
-          <div class="summaryButtons">
-            <button>Anuluj zamówienie</button>
-            <button class="green">Gotowe!</button>
           </div>
-        </section>
+        </div>
       </section>
     </section>
-    <script th:src="@{../js/script.js}"></script>
-  </body>
+
+    <section class="summaryBox">
+      <div th:text="'Do zapłaty: ' + ${showPrice} + ' | Zamówiono ' + ${showCount} + ' rzeczy'" class="summaryInfo"></div>
+<!--      <div class="summaryInfo">Do zapłaty: 100zł | Zamówiono: 5 rzeczy</div>-->
+      <div class="summaryButtons">
+<!--        <a th:href="@{/deleteOrder/{id}(id=${order.id_order})}" class="resturantBtn red">usuń</a>-->
+        <a th:href="@{/deleteOrdered}"><button>Anuluj zamówienie</button></a>
+        <a href ="summary"><button class="green">Gotowe!</button></a>
+      </div>
+    </section>
+  </section>
+</section>
+<script th:src="@{/js/script.js}"></script>
+</body>
 </html>

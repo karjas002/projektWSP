@@ -17,4 +17,7 @@ public interface OrderService {
         void deleteOrder(Order order);
         FoodList findById (long Id);
         List<FoodList> findAll();
+        List<Order> findDone();
+        List<Order> findNotCollected();
+        List<Order> findKitchen();
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,6 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
     <script
       type="text/javascript"
       src="https://code.jquery.com/jquery-1.7.2.js"
@@ -22,14 +23,18 @@
       <section class="payment-content">
         <h2 class="paymentH2">Jak chcesz zapłacić?</h2>
         <section class="methods">
-          <div class="card">
-            <img src="payhere.png" alt="" />
-            <h2>Zapłać kartą tutaj</h2>
-          </div>
-          <div class="cash">
-            <img src="cash.png" alt="" />
-            <h2>Zapłać gotówką przy kasie</h2>
-          </div>
+          <a href = "success">
+            <div class="card">
+              <img th:src = "@{../images/payhere.png}" alt="" />
+              <h2>Zapłać kartą tutaj</h2>
+            </div>
+          </a>
+          <a href = "success">
+            <div class="cash">
+              <img th:src = "@{../images/cash.png}" alt="" />
+              <h2>Zapłać gotówką przy kasie</h2>
+            </div>
+          </a>
         </section>
       </section>
     </section>

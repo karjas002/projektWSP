@@ -34,6 +34,8 @@ public class OrderServiceImpl implements OrderService{
         return orderRepository.findBymakingTrue();
     }
     @Override
+    public List<Order> findDone(){ return orderRepository.findBydoneTrue();}
+    @Override
     public List<FoodOrdered> getOrderedFood(Order order){
         return foodOrderedRepository.findFoodOrderedByOrder(order);
     }
@@ -41,7 +43,7 @@ public class OrderServiceImpl implements OrderService{
     public Order findOrder(long id) { return orderRepository.findById(id);}
     @Override
     public Order saveOrder(Order order) {
-        return orderRepository.save(order);
+        return orderRepository.saveAndFlush(order);
     }
     @Override
     public void deleteOrder(Order order){
@@ -56,4 +58,8 @@ public class OrderServiceImpl implements OrderService{
     public List<FoodList> findAll(){
         return foodListRepository.findAll();
     }
+    @Override
+    public List<Order> findNotCollected(){ return orderRepository.findBycollectedFalse();}
+    @Override
+    public List<Order> findKitchen(){ return orderRepository.findBydoneTrueAndcollectedFalse();}
 }
